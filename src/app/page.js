@@ -163,20 +163,20 @@ export default function Home() {
 												rank: "India's best management Institute",
 											},
 											{
-												name: "Amity",
+												name: "Amity University",
 												rank: "#1 in Engineering",
 											},
-											{ name: "IGDTUW", rank: "#2 in Technology" },
+											{ name: "Indira Gandhi Delhi Technical University", rank: "#2 in Technology" },
 											{
-												name: "Jaipuria institute",
+												name: "Jaipuria Institute of Management Noida",
 												rank: "Top Private University",
 											},
 											{
 												name: "IMS Engineering College",
 												rank: "Premier Technical Institute",
 											},
-											{ name: "Christ university", rank: "Innovation Leader" },
-											{ name: "ITS mohan nagar", rank: "Research Excellence" },
+											{ name: "Christ University", rank: "Innovation Leader" },
+											{ name: "ITS Mohan Nagar", rank: "Research Excellence" },
 										].map((college, index) => (
 											<div key={index} className="bg-red-900/40 rounded-lg p-3 hover:bg-red-900/60 transition-all duration-300">
 												<div className="flex justify-between items-center">

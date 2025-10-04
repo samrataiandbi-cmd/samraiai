@@ -1,0 +1,411 @@
+@import "tailwindcss";
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap");
+
+:root {
+	--background: #ffffff;
+	--foreground: #171717;
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		--background: #0a0a0a;
+		--foreground: #ededed;
+	}
+}
+
+body {
+	background: var(--background);
+	color: var(--foreground);
+	font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+	line-height: 1.6;
+}
+
+/* Smooth scrolling */
+html {
+	scroll-behavior: smooth;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+	width: 8px;
+}
+
+::-webkit-scrollbar-track {
+	background: #1e293b;
+}
+
+::-webkit-scrollbar-thumb {
+	background: linear-gradient(180deg, #06b6d4, #3b82f6);
+	border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background: linear-gradient(180deg, #0891b2, #2563eb);
+}
+
+/* Custom animations */
+@keyframes fadeInUp {
+	from {
+		opacity: 0;
+		transform: translateY(30px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+@keyframes slideInLeft {
+	from {
+		opacity: 0;
+		transform: translateX(-30px);
+	}
+	to {
+		opacity: 1;
+		transform: translateX(0);
+	}
+}
+
+@keyframes slideInRight {
+	from {
+		opacity: 0;
+		transform: translateX(30px);
+	}
+	to {
+		opacity: 1;
+		transform: translateX(0);
+	}
+}
+
+@keyframes pulse {
+	0%,
+	100% {
+		opacity: 1;
+	}
+	50% {
+		opacity: 0.7;
+	}
+}
+
+@keyframes float {
+	0%,
+	100% {
+		transform: translateY(0px);
+	}
+	50% {
+		transform: translateY(-10px);
+	}
+}
+
+.animate-fadeInUp {
+	animation: fadeInUp 0.6s ease-out;
+}
+
+.animate-slideInLeft {
+	animation: slideInLeft 0.6s ease-out;
+}
+
+.animate-slideInRight {
+	animation: slideInRight 0.6s ease-out;
+}
+
+.animate-float {
+	animation: float 3s ease-in-out infinite;
+}
+
+/* Gradient text selection */
+::selection {
+	background: rgba(6, 182, 212, 0.3);
+}
+
+/* Focus styles */
+button:focus,
+a:focus {
+	outline: 2px solid #06b6d4;
+	outline-offset: 2px;
+}
+
+/* Backdrop blur fallback */
+@supports not (backdrop-filter: blur(10px)) {
+	.backdrop-blur-md {
+		background: rgba(15, 23, 42, 0.8);
+	}
+}
+
+/* Typography improvements */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-weight: 700;
+	line-height: 1.2;
+	letter-spacing: -0.025em;
+}
+
+p {
+	line-height: 1.7;
+}
+
+/* Enhanced button styles */
+.btn-primary {
+	background: linear-gradient(135deg, #06b6d4, #3b82f6);
+	border: none;
+	padding: 12px 24px;
+	border-radius: 9999px;
+	font-weight: 600;
+	transition: all 0.3s ease;
+	box-shadow: 0 4px 14px 0 rgba(6, 182, 212, 0.3);
+}
+
+.btn-primary:hover {
+	background: linear-gradient(135deg, #0891b2, #2563eb);
+	transform: translateY(-2px);
+	box-shadow: 0 6px 20px 0 rgba(6, 182, 212, 0.4);
+}
+
+/* Card hover effects */
+.card {
+	transition: all 0.3s ease;
+	background: rgba(255, 255, 255, 0.1);
+	backdrop-filter: blur(10px);
+	border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.card:hover {
+	transform: translateY(-5px);
+	background: rgba(255, 255, 255, 0.15);
+	box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+/* Responsive typography */
+@media (max-width: 640px) {
+	h1 {
+		font-size: 2.5rem;
+		line-height: 1.1;
+	}
+
+	h2 {
+		font-size: 2rem;
+		line-height: 1.2;
+	}
+}
+
+/* Loading states */
+.loading {
+	opacity: 0.6;
+	pointer-events: none;
+}
+
+/* Custom gradient backgrounds */
+.gradient-bg-1 {
+	background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.gradient-bg-2 {
+	background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+}
+
+.gradient-bg-3 {
+	background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+}
+
+/* New glass + gradient helpers */
+.glass {
+	background: rgba(255, 255, 255, 0.7);
+	backdrop-filter: blur(16px) saturate(180%);
+	border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.section-divider {
+	position: relative;
+	isolation: isolate;
+}
+
+.section-divider:before {
+	content: "";
+	position: absolute;
+	inset: 0;
+	pointer-events: none;
+	background: radial-gradient(circle at 20% 35%, rgba(59, 130, 246, 0.25), transparent 60%),
+		radial-gradient(circle at 80% 65%, rgba(29, 78, 216, 0.25), transparent 55%);
+	opacity: 0.4;
+	mix-blend-mode: overlay;
+}
+
+.gradient-border {
+	position: relative;
+}
+
+.gradient-border:before {
+	content: "";
+	position: absolute;
+	inset: 0;
+	padding: 1px;
+	border-radius: inherit;
+	background: linear-gradient(120deg, #3b82f6, #6366f1, #0ea5e9);
+	-webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+	mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+	-webkit-mask-composite: xor;
+	mask-composite: exclude;
+	pointer-events: none;
+}
+
+.text-glow {
+	text-shadow: 0 0 15px rgba(59, 130, 246, 0.35);
+}
+
+.button-shine {
+	position: relative;
+	overflow: hidden;
+}
+
+.button-shine:after {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: -150%;
+	width: 100%;
+	height: 100%;
+	background: linear-gradient(75deg, transparent, rgba(255, 255, 255, 0.6), transparent);
+	transform: skewX(-20deg);
+	animation: shine 4s infinite;
+	opacity: 0.7;
+}
+
+@keyframes shine {
+	0% {
+		left: -150%;
+	}
+	60% {
+		left: 150%;
+	}
+	100% {
+		left: 150%;
+	}
+}
+
+.section-angled-top {
+	clip-path: polygon(0 0, 100% 8%, 100% 100%, 0 100%);
+}
+
+.section-angled-bottom {
+	clip-path: polygon(0 0, 100% 0, 100% 92%, 0 100%);
+}
+
+/* Enhanced Glassmorphism Effects */
+.glass-card {
+	backdrop-filter: blur(16px);
+	-webkit-backdrop-filter: blur(16px);
+	background: rgba(255, 255, 255, 0.1);
+	border: 1px solid rgba(255, 255, 255, 0.2);
+	box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.glass-card:hover {
+	background: rgba(255, 255, 255, 0.15);
+	border: 1px solid rgba(255, 255, 255, 0.3);
+	box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+}
+
+/* Fallback for browsers that don't support backdrop-filter */
+@supports not (backdrop-filter: blur(16px)) {
+	.glass-card {
+		background: rgba(30, 41, 59, 0.8);
+		border: 1px solid rgba(100, 116, 139, 0.3);
+	}
+
+	.glass-card:hover {
+		background: rgba(30, 41, 59, 0.9);
+		border: 1px solid rgba(100, 116, 139, 0.4);
+	}
+}
+
+/* Testimonial card: subtle glass + blur effect specifically for testimonial cards */
+.testimonial-card {
+	background: rgba(255, 255, 255, 0.06);
+	backdrop-filter: blur(8px) saturate(140%);
+	-webkit-backdrop-filter: blur(8px) saturate(140%);
+	border: 1px solid rgba(255, 255, 255, 0.08);
+	transition: transform 0.25s ease, box-shadow 0.25s ease, backdrop-filter 0.25s ease;
+}
+
+.testimonial-card:hover {
+	transform: translateY(-6px);
+	box-shadow: 0 18px 40px rgba(0, 0, 0, 0.25);
+	backdrop-filter: blur(10px) saturate(150%);
+	-webkit-backdrop-filter: blur(10px) saturate(150%);
+}
+
+/* Reduce blur on small screens for performance and clarity */
+@media (max-width: 768px) {
+	.testimonial-card {
+		backdrop-filter: none;
+		-webkit-backdrop-filter: none;
+		background: rgba(255, 255, 255, 0.04);
+		box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+	}
+}
+
+/* Respect reduced motion and reduce visual intensity */
+@media (prefers-reduced-motion: reduce) {
+	.testimonial-card,
+	.testimonial-card:hover {
+		transform: none !important;
+		transition: none !important;
+		backdrop-filter: none !important;
+		-webkit-backdrop-filter: none !important;
+	}
+}
+
+/* Video container styling */
+.video-bg-container {
+	position: relative;
+	overflow: hidden;
+}
+
+.video-bg-container video {
+	object-fit: cover;
+	width: 100%;
+	height: 100%;
+}
+
+/* Carousel specific styles */
+.carousel-container {
+	perspective: 1000px;
+}
+
+.carousel-slide {
+	transform-style: preserve-3d;
+	transition: transform 0.5s ease-in-out;
+}
+
+/* Smooth transitions for carousel navigation */
+.carousel-nav-button {
+	backdrop-filter: blur(16px);
+	-webkit-backdrop-filter: blur(16px);
+	transition: all 0.3s ease;
+}
+
+.carousel-nav-button:hover {
+	backdrop-filter: blur(20px);
+	-webkit-backdrop-filter: blur(20px);
+	transform: scale(1.05);
+}
+
+/* Custom scrollbar for carousel if needed */
+.carousel-container::-webkit-scrollbar {
+	display: none;
+}
+
+/* Carousel indicator dots */
+.carousel-dots {
+	filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+}
+
+/* Progress bar styling */
+.carousel-progress {
+	background: linear-gradient(90deg, #6366f1, #3b82f6);
+	box-shadow: 0 2px 8px rgba(99, 102, 241, 0.3);
+}

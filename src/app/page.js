@@ -60,7 +60,7 @@ export default function Home() {
 								About <span className="bg-gradient-to-r from-yellow-400 to-amber-500 bg-clip-text text-transparent">Samrat</span>
 							</h2>
 							<p className="text-lg text-gray-200 mb-6 leading-relaxed">
-								I am a Manager in Data Analytics and a passionate educator with 13 years of corporate experience at top organizations,
+								I am a Manager Data Analytics and a passionate educator with 13 years of corporate experience at top organizations,
 								alongside 8 years of teaching experience.
 							</p>
 							<p className="text-lg text-gray-200 mb-8 leading-relaxed">

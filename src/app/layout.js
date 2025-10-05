@@ -1,4 +1,6 @@
 import { Inter } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
 
 const inter = Inter({
@@ -103,6 +105,8 @@ export const metadata = {
 export default function RootLayout({ children }) {
 	return (
 		<html lang="en" className="scroll-smooth">
+			<Analytics />
+			<SpeedInsights />
 			<body className={`${inter.className} antialiased`}>{children}</body>
 		</html>
 	);

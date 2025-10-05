@@ -1,8 +1,7 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
-
 ## Samrat AI - Data Analytics & AI Training Platform
 
 Expert-led, hands-on training in Data Analytics, Machine Learning, and AI designed to make you industry-ready.
+SamratAi.com
 
 ## Getting Started
 

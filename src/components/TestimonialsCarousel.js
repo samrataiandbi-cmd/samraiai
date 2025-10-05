@@ -131,6 +131,9 @@ export default function TestimonialsCarousel() {
 
 	// Determine testimonials per slide based on window width
 	useEffect(() => {
+		// Only run on client side
+		if (typeof window === "undefined") return;
+
 		const handleResize = () => {
 			setWindowWidth(window.innerWidth);
 		};

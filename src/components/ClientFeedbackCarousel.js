@@ -3,6 +3,22 @@ import { useState, useEffect } from "react";
 
 const ClientFeedbackCarousel = () => {
 	const [currentIndex, setCurrentIndex] = useState(0);
+	const [isMobile, setIsMobile] = useState(false);
+
+	// Handle window resize for responsive behavior
+	useEffect(() => {
+		if (typeof window === "undefined") return;
+
+		const handleResize = () => {
+			setIsMobile(window.innerWidth < 640);
+		};
+
+		// Set initial state
+		handleResize();
+
+		window.addEventListener("resize", handleResize);
+		return () => window.removeEventListener("resize", handleResize);
+	}, []);
 
 	const testimonials = [
 		{
@@ -61,7 +77,7 @@ const ClientFeedbackCarousel = () => {
 				<div
 					className="transition-transform duration-500 ease-in-out"
 					style={{
-						transform: `translateY(-${currentIndex * (window.innerWidth < 640 ? 112 : 128)}px)`,
+						transform: `translateY(-${currentIndex * (isMobile ? 112 : 128)}px)`,
 					}}
 				>
 					{testimonials.map((testimonial, index) => (

@@ -267,7 +267,7 @@ export default function TestimonialsCarousel() {
 					<button
 						key={slideIndex}
 						onClick={() => goToSlide(slideIndex)}
-						className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full transition-all duration-300 ${
+						className={`carousel-dot w-2 h-2 sm:w-3 sm:h-3 rounded-full transition-all duration-300 ${
 							slideIndex === currentSlide ? "bg-orange-400 w-6 sm:w-8" : "bg-white/30 hover:bg-white/50"
 						}`}
 						aria-label={`Go to slide ${slideIndex + 1}`}

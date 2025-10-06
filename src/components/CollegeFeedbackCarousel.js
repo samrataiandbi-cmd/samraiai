@@ -97,7 +97,9 @@ const CollegeFeedbackCarousel = () => {
 						<button
 							key={index}
 							onClick={() => setCurrentIndex(index)}
-							className={`w-2 h-2 rounded-full transition-colors ${index === currentIndex ? "bg-yellow-400" : "bg-slate-600"}`}
+							className={`carousel-dot w-2 h-2 rounded-full transition-colors ${
+								index === currentIndex ? "bg-yellow-400" : "bg-slate-600"
+							}`}
 							aria-label={`Go to testimonial ${index + 1}`}
 						/>
 					))}

@@ -113,7 +113,7 @@ const ClientFeedbackCarousel = () => {
 						<button
 							key={index}
 							onClick={() => setCurrentIndex(index)}
-							className={`w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full transition-colors ${
+							className={`carousel-dot w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full transition-colors ${
 								index === currentIndex ? "bg-yellow-400" : "bg-slate-600"
 							}`}
 							aria-label={`Go to testimonial ${index + 1}`}

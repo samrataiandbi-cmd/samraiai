@@ -105,6 +105,14 @@ export const metadata = {
 export default function RootLayout({ children }) {
 	return (
 		<html lang="en" className="scroll-smooth">
+			<head>
+				<meta property="og:image" content="https://samratai.com/images/preview.png" />
+				<meta property="og:image:width" content="1200" />
+				<meta property="og:image:height" content="630" />
+				<meta property="og:image:alt" content="Samrat AI - Expert-led Data Analytics & AI Training" />
+				<meta name="twitter:image" content="https://samratai.com/images/preview.png" />
+				<meta name="twitter:card" content="summary_large_image" />
+			</head>
 			<Analytics />
 			<SpeedInsights />
 			<body className={`${inter.className} antialiased`}>{children}</body>

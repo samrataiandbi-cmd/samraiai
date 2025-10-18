@@ -241,7 +241,7 @@ export default function ContactPage() {
 										Course Enquiry
 									</option>
 									<option value="Batch enquiry" className="bg-slate-800">
-										Batch Enquiry
+										Private or Individual Batches Enquiry
 									</option>
 								</select>
 								{errors.reasonForContact && <p className="mt-1 text-sm text-red-400">{errors.reasonForContact}</p>}

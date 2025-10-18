@@ -214,7 +214,6 @@ export default function ContactPage() {
 								</div>
 							</div>{" "}
 							{/* Reason for Contact */}
-							{/* Reason for Contact */}
 							<div>
 								<label htmlFor="reasonForContact" className="block text-sm font-semibold text-gray-200 mb-2">
 									Reason for Contact <span className="text-red-400">*</span>
@@ -256,11 +255,11 @@ export default function ContactPage() {
 									className="space-y-6 border-t border-white/10 pt-6"
 								>
 									<h3 className="text-xl font-semibold text-yellow-400 mb-4">Training Details</h3>
-
-									{/* Organisation Name */}
+									{/* Organisation/College Name */}
 									<div>
 										<label htmlFor="organisationName" className="block text-sm font-semibold text-gray-200 mb-2">
-											Organisation Name <span className="text-red-400">*</span>
+											{formData.reasonForContact === "College Training enquiry" ? "College Name" : "Organisation Name"}{" "}
+											<span className="text-red-400">*</span>
 										</label>
 										<input
 											type="text"
@@ -269,11 +268,14 @@ export default function ContactPage() {
 											value={formData.organisationName}
 											onChange={handleChange}
 											className="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:border-transparent transition-all"
-											placeholder="Enter your organisation name"
+											placeholder={
+												formData.reasonForContact === "College Training enquiry"
+													? "Enter your college name"
+													: "Enter your organisation name"
+											}
 										/>
 										{errors.organisationName && <p className="mt-1 text-sm text-red-400">{errors.organisationName}</p>}
-									</div>
-
+									</div>{" "}
 									{/* Select Course */}
 									<div>
 										<label htmlFor="selectedCourse" className="block text-sm font-semibold text-gray-200 mb-2">
@@ -300,7 +302,6 @@ export default function ContactPage() {
 										</select>
 										{errors.selectedCourse && <p className="mt-1 text-sm text-red-400">{errors.selectedCourse}</p>}
 									</div>
-
 									{/* Other Course Input - Shows when "Other" is selected */}
 									{formData.selectedCourse === "Other (Specific requirement)" && (
 										<motion.div
@@ -323,7 +324,6 @@ export default function ContactPage() {
 											{errors.otherCourse && <p className="mt-1 text-sm text-red-400">{errors.otherCourse}</p>}
 										</motion.div>
 									)}
-
 									<div className="grid grid-cols-1 md:grid-cols-2 gap-6">
 										{/* Schedule Training */}
 										<div>
@@ -369,7 +369,6 @@ export default function ContactPage() {
 											{errors.preferredMode && <p className="mt-1 text-sm text-red-400">{errors.preferredMode}</p>}
 										</div>
 									</div>
-
 									{/* Number of Participants */}
 									<div>
 										<label htmlFor="numberOfParticipants" className="block text-sm font-semibold text-gray-200 mb-2">
@@ -397,7 +396,6 @@ export default function ContactPage() {
 										</select>
 										{errors.numberOfParticipants && <p className="mt-1 text-sm text-red-400">{errors.numberOfParticipants}</p>}
 									</div>
-
 									{/* Additional Comments */}
 									<div>
 										<label htmlFor="additionalComments" className="block text-sm font-semibold text-gray-200 mb-2">
@@ -563,34 +561,6 @@ export default function ContactPage() {
 											placeholder="Please describe your consultation requirements and goals..."
 										/>
 										{errors.requirements && <p className="mt-1 text-sm text-red-400">{errors.requirements}</p>}
-									</div>
-
-									{/* Preferred Mode */}
-									<div>
-										<label htmlFor="preferredMode" className="block text-sm font-semibold text-gray-200 mb-2">
-											Preferred Mode of Training <span className="text-red-400">*</span>
-										</label>
-										<select
-											id="preferredMode"
-											name="preferredMode"
-											value={formData.preferredMode}
-											onChange={handleChange}
-											className="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:border-transparent transition-all"
-										>
-											<option value="" className="bg-slate-800">
-												Select mode
-											</option>
-											<option value="Online" className="bg-slate-800">
-												Online
-											</option>
-											<option value="In-person" className="bg-slate-800">
-												In-person
-											</option>
-											<option value="Hybrid" className="bg-slate-800">
-												Hybrid
-											</option>
-										</select>
-										{errors.preferredMode && <p className="mt-1 text-sm text-red-400">{errors.preferredMode}</p>}
 									</div>
 								</motion.div>
 							)}

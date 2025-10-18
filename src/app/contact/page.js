@@ -289,14 +289,14 @@ export default function ContactPage() {
 											<option value="" className="bg-slate-800">
 												Select a course
 											</option>
+											<option value="Other (Specific requirement)" className="bg-slate-800">
+												Other (Specific requirement)
+											</option>
 											{courses.map((course) => (
 												<option key={course} value={course} className="bg-slate-800">
 													{course}
 												</option>
 											))}
-											<option value="Other (Specific requirement)" className="bg-slate-800">
-												Other (Specific requirement)
-											</option>
 										</select>
 										{errors.selectedCourse && <p className="mt-1 text-sm text-red-400">{errors.selectedCourse}</p>}
 									</div>

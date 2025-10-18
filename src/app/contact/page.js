@@ -23,15 +23,16 @@ export default function ContactPage() {
 		name: "",
 		phone: "",
 		email: "",
-		role: "",
 		reasonForContact: "",
 		organisationName: "",
 		selectedCourse: "",
+		otherCourse: "",
 		scheduleTraining: "",
 		preferredMode: "",
 		numberOfParticipants: "",
 		enquiryDetails: "",
 		additionalComments: "",
+		requirements: "",
 	});
 
 	const [errors, setErrors] = useState({});
@@ -60,13 +61,15 @@ export default function ContactPage() {
 		else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
 			newErrors.email = "Please enter a valid email address";
 		}
-		if (!formData.role) newErrors.role = "Please select your role";
 		if (!formData.reasonForContact) newErrors.reasonForContact = "Please select a reason for contact";
 
 		// Conditional validation based on reason for contact
 		if (formData.reasonForContact === "Corporate Training enquiry" || formData.reasonForContact === "College Training enquiry") {
 			if (!formData.organisationName.trim()) newErrors.organisationName = "Organisation name is required";
 			if (!formData.selectedCourse) newErrors.selectedCourse = "Please select a course";
+			if (formData.selectedCourse === "Other (Specific requirement)" && !formData.otherCourse.trim()) {
+				newErrors.otherCourse = "Please specify the course";
+			}
 			if (!formData.scheduleTraining.trim()) newErrors.scheduleTraining = "Please specify training schedule";
 			if (!formData.preferredMode) newErrors.preferredMode = "Please select preferred mode";
 			if (!formData.numberOfParticipants) newErrors.numberOfParticipants = "Please select number of participants";
@@ -74,7 +77,16 @@ export default function ContactPage() {
 
 		if (formData.reasonForContact === "Course enquiry" || formData.reasonForContact === "Batch enquiry") {
 			if (!formData.selectedCourse) newErrors.selectedCourse = "Please select a course";
+			if (formData.selectedCourse === "Other (Specific requirement)" && !formData.otherCourse.trim()) {
+				newErrors.otherCourse = "Please specify the course";
+			}
 			if (!formData.enquiryDetails.trim()) newErrors.enquiryDetails = "Please provide enquiry details";
+			if (!formData.preferredMode) newErrors.preferredMode = "Please select preferred mode";
+		}
+
+		if (formData.reasonForContact === "Corporate Consultation") {
+			if (!formData.organisationName.trim()) newErrors.organisationName = "Organisation name is required";
+			if (!formData.requirements.trim()) newErrors.requirements = "Please describe your requirements";
 			if (!formData.preferredMode) newErrors.preferredMode = "Please select preferred mode";
 		}
 
@@ -95,21 +107,23 @@ export default function ContactPage() {
 				name: "",
 				phone: "",
 				email: "",
-				role: "",
 				reasonForContact: "",
 				organisationName: "",
 				selectedCourse: "",
+				otherCourse: "",
 				scheduleTraining: "",
 				preferredMode: "",
 				numberOfParticipants: "",
 				enquiryDetails: "",
 				additionalComments: "",
+				requirements: "",
 			});
 		}
 	};
 
 	const showTrainingFields = formData.reasonForContact === "Corporate Training enquiry" || formData.reasonForContact === "College Training enquiry";
 	const showCourseFields = formData.reasonForContact === "Course enquiry" || formData.reasonForContact === "Batch enquiry";
+	const showConsultationFields = formData.reasonForContact === "Corporate Consultation";
 
 	return (
 		<div className="min-h-screen bg-gradient-to-br from-red-900 via-red-950 to-red-900">
@@ -198,45 +212,8 @@ export default function ContactPage() {
 									/>
 									{errors.email && <p className="mt-1 text-sm text-red-400">{errors.email}</p>}
 								</div>
-
-								{/* Role */}
-								<div>
-									<label htmlFor="role" className="block text-sm font-semibold text-gray-200 mb-2">
-										Your Role <span className="text-red-400">*</span>
-									</label>
-									<select
-										id="role"
-										name="role"
-										value={formData.role}
-										onChange={handleChange}
-										className="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:border-transparent transition-all"
-									>
-										<option value="" className="bg-slate-800">
-											Select your role
-										</option>
-										<option value="Student" className="bg-slate-800">
-											Student
-										</option>
-										<option value="Placement Officer" className="bg-slate-800">
-											Placement Officer
-										</option>
-										<option value="Hiring Manager" className="bg-slate-800">
-											Hiring Manager
-										</option>
-										<option value="Company Representative" className="bg-slate-800">
-											Company Representative
-										</option>
-										<option value="Professional" className="bg-slate-800">
-											Professional
-										</option>
-										<option value="Other" className="bg-slate-800">
-											Other
-										</option>
-									</select>
-									{errors.role && <p className="mt-1 text-sm text-red-400">{errors.role}</p>}
-								</div>
-							</div>
-
+							</div>{" "}
+							{/* Reason for Contact */}
 							{/* Reason for Contact */}
 							<div>
 								<label htmlFor="reasonForContact" className="block text-sm font-semibold text-gray-200 mb-2">
@@ -252,6 +229,9 @@ export default function ContactPage() {
 									<option value="" className="bg-slate-800">
 										Select reason for contact
 									</option>
+									<option value="Corporate Consultation" className="bg-slate-800">
+										Corporate Consultation
+									</option>
 									<option value="Corporate Training enquiry" className="bg-slate-800">
 										Corporate Training Enquiry
 									</option>
@@ -266,8 +246,7 @@ export default function ContactPage() {
 									</option>
 								</select>
 								{errors.reasonForContact && <p className="mt-1 text-sm text-red-400">{errors.reasonForContact}</p>}
-							</div>
-
+							</div>{" "}
 							{/* Conditional Fields for Training Enquiries */}
 							{showTrainingFields && (
 								<motion.div
@@ -315,9 +294,35 @@ export default function ContactPage() {
 													{course}
 												</option>
 											))}
+											<option value="Other (Specific requirement)" className="bg-slate-800">
+												Other (Specific requirement)
+											</option>
 										</select>
 										{errors.selectedCourse && <p className="mt-1 text-sm text-red-400">{errors.selectedCourse}</p>}
 									</div>
+
+									{/* Other Course Input - Shows when "Other" is selected */}
+									{formData.selectedCourse === "Other (Specific requirement)" && (
+										<motion.div
+											initial={{ opacity: 0, height: 0 }}
+											animate={{ opacity: 1, height: "auto" }}
+											exit={{ opacity: 0, height: 0 }}
+										>
+											<label htmlFor="otherCourse" className="block text-sm font-semibold text-gray-200 mb-2">
+												Please Specify Course <span className="text-red-400">*</span>
+											</label>
+											<input
+												type="text"
+												id="otherCourse"
+												name="otherCourse"
+												value={formData.otherCourse}
+												onChange={handleChange}
+												className="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:border-transparent transition-all"
+												placeholder="Enter the specific course you're interested in"
+											/>
+											{errors.otherCourse && <p className="mt-1 text-sm text-red-400">{errors.otherCourse}</p>}
+										</motion.div>
+									)}
 
 									<div className="grid grid-cols-1 md:grid-cols-2 gap-6">
 										{/* Schedule Training */}
@@ -410,7 +415,6 @@ export default function ContactPage() {
 									</div>
 								</motion.div>
 							)}
-
 							{/* Conditional Fields for Course/Batch Enquiries */}
 							{showCourseFields && (
 								<motion.div
@@ -436,6 +440,9 @@ export default function ContactPage() {
 											<option value="" className="bg-slate-800">
 												Select a course
 											</option>
+											<option value="Other (Specific requirement)" className="bg-slate-800">
+												Other (Specific requirement)
+											</option>
 											{courses.map((course) => (
 												<option key={course} value={course} className="bg-slate-800">
 													{course}
@@ -444,6 +451,29 @@ export default function ContactPage() {
 										</select>
 										{errors.selectedCourse && <p className="mt-1 text-sm text-red-400">{errors.selectedCourse}</p>}
 									</div>
+
+									{/* Other Course Input - Shows when "Other" is selected */}
+									{formData.selectedCourse === "Other (Specific requirement)" && (
+										<motion.div
+											initial={{ opacity: 0, height: 0 }}
+											animate={{ opacity: 1, height: "auto" }}
+											exit={{ opacity: 0, height: 0 }}
+										>
+											<label htmlFor="otherCourse" className="block text-sm font-semibold text-gray-200 mb-2">
+												Please Specify Course <span className="text-red-400">*</span>
+											</label>
+											<input
+												type="text"
+												id="otherCourse"
+												name="otherCourse"
+												value={formData.otherCourse}
+												onChange={handleChange}
+												className="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:border-transparent transition-all"
+												placeholder="Enter the specific course you're interested in"
+											/>
+											{errors.otherCourse && <p className="mt-1 text-sm text-red-400">{errors.otherCourse}</p>}
+										</motion.div>
+									)}
 
 									{/* Enquiry Details */}
 									<div>
@@ -491,7 +521,79 @@ export default function ContactPage() {
 									</div>
 								</motion.div>
 							)}
+							{/* Conditional Fields for Corporate Consultation */}
+							{showConsultationFields && (
+								<motion.div
+									initial={{ opacity: 0, height: 0 }}
+									animate={{ opacity: 1, height: "auto" }}
+									exit={{ opacity: 0, height: 0 }}
+									className="space-y-6 border-t border-white/10 pt-6"
+								>
+									<h3 className="text-xl font-semibold text-yellow-400 mb-4">Consultation Details</h3>
 
+									{/* Organisation Name */}
+									<div>
+										<label htmlFor="organisationName" className="block text-sm font-semibold text-gray-200 mb-2">
+											Organisation Name <span className="text-red-400">*</span>
+										</label>
+										<input
+											type="text"
+											id="organisationName"
+											name="organisationName"
+											value={formData.organisationName}
+											onChange={handleChange}
+											className="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:border-transparent transition-all"
+											placeholder="Enter your organisation name"
+										/>
+										{errors.organisationName && <p className="mt-1 text-sm text-red-400">{errors.organisationName}</p>}
+									</div>
+
+									{/* Your Requirements */}
+									<div>
+										<label htmlFor="requirements" className="block text-sm font-semibold text-gray-200 mb-2">
+											Your Requirements <span className="text-red-400">*</span>
+										</label>
+										<textarea
+											id="requirements"
+											name="requirements"
+											value={formData.requirements}
+											onChange={handleChange}
+											rows="4"
+											className="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:border-transparent transition-all resize-none"
+											placeholder="Please describe your consultation requirements and goals..."
+										/>
+										{errors.requirements && <p className="mt-1 text-sm text-red-400">{errors.requirements}</p>}
+									</div>
+
+									{/* Preferred Mode */}
+									<div>
+										<label htmlFor="preferredMode" className="block text-sm font-semibold text-gray-200 mb-2">
+											Preferred Mode of Training <span className="text-red-400">*</span>
+										</label>
+										<select
+											id="preferredMode"
+											name="preferredMode"
+											value={formData.preferredMode}
+											onChange={handleChange}
+											className="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:border-transparent transition-all"
+										>
+											<option value="" className="bg-slate-800">
+												Select mode
+											</option>
+											<option value="Online" className="bg-slate-800">
+												Online
+											</option>
+											<option value="In-person" className="bg-slate-800">
+												In-person
+											</option>
+											<option value="Hybrid" className="bg-slate-800">
+												Hybrid
+											</option>
+										</select>
+										{errors.preferredMode && <p className="mt-1 text-sm text-red-400">{errors.preferredMode}</p>}
+									</div>
+								</motion.div>
+							)}
 							{/* Submit Button */}
 							<motion.button
 								type="submit"
@@ -509,7 +611,7 @@ export default function ContactPage() {
 						initial={{ opacity: 0, y: 20 }}
 						animate={{ opacity: 1, y: 0 }}
 						transition={{ duration: 0.6, delay: 0.4 }}
-						className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6"
+						className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-6"
 					>
 						{/* Email */}
 						<div className="glass-card rounded-2xl p-6 text-center backdrop-blur-xl bg-white/5 border border-white/10">
@@ -553,23 +655,6 @@ export default function ContactPage() {
 							>
 								+91 98108 03676
 							</a>
-						</div>
-
-						{/* Location */}
-						<div className="glass-card rounded-2xl p-6 text-center backdrop-blur-xl bg-white/5 border border-white/10">
-							<div className="w-12 h-12 bg-purple-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
-								<svg className="w-6 h-6 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-									<path
-										strokeLinecap="round"
-										strokeLinejoin="round"
-										strokeWidth={2}
-										d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
-									/>
-									<path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-								</svg>
-							</div>
-							<h3 className="text-white font-semibold mb-2">Location</h3>
-							<p className="text-white text-sm font-bold">Ghaziabad, India</p>
 						</div>
 					</motion.div>
 				</div>

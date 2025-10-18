@@ -276,7 +276,7 @@ export default function ContactPage() {
 									exit={{ opacity: 0, height: 0 }}
 									className="space-y-6 border-t border-white/10 pt-6"
 								>
-									<h3 className="text-xl font-semibold text-cyan-400 mb-4">Training Details</h3>
+									<h3 className="text-xl font-semibold text-yellow-400 mb-4">Training Details</h3>
 
 									{/* Organisation Name */}
 									<div>

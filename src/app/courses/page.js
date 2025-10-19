@@ -373,7 +373,7 @@ export default function CoursesPage() {
 										Explore Course
 									</button> */}
 									<Link
-										href="https://forms.gle/JrS5NyqdWMvBM46d7"
+										href="/contact"
 										className="w-full bg-gradient-to-r from-orange-500 to-amber-500 text-white py-4 rounded-2xl font-semibold hover:from-orange-600 hover:to-amber-600 transition-all duration-300 transform hover:scale-105 shadow-lg text-center block"
 									>
 										Explore Course

@@ -2,6 +2,8 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import Navigation from "@/components/Navigation";
+import { db } from "@/lib/firebase";
+import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 
 const courses = [
 	"Data Science Course",
@@ -87,37 +89,77 @@ export default function ContactPage() {
 		if (formData.reasonForContact === "Corporate Consultation") {
 			if (!formData.organisationName.trim()) newErrors.organisationName = "Organisation name is required";
 			if (!formData.requirements.trim()) newErrors.requirements = "Please describe your requirements";
-			if (!formData.preferredMode) newErrors.preferredMode = "Please select preferred mode";
 		}
 
 		setErrors(newErrors);
 		return Object.keys(newErrors).length === 0;
 	};
 
-	const handleSubmit = (e) => {
+	const handleSubmit = async (e) => {
 		e.preventDefault();
 
 		if (validateForm()) {
-			// TODO: Firebase integration will be added here
-			console.log("Form submitted:", formData);
-			alert("Thank you for your enquiry! We will get back to you soon.");
+			try {
+				// Prepare the query data based on the reason for contact
+				const queryData = {
+					name: formData.name,
+					phone: formData.phone,
+					email: formData.email,
+					reasonForContact: formData.reasonForContact,
+					timestamp: serverTimestamp(),
+				};
 
-			// Reset form
-			setFormData({
-				name: "",
-				phone: "",
-				email: "",
-				reasonForContact: "",
-				organisationName: "",
-				selectedCourse: "",
-				otherCourse: "",
-				scheduleTraining: "",
-				preferredMode: "",
-				numberOfParticipants: "",
-				enquiryDetails: "",
-				additionalComments: "",
-				requirements: "",
-			});
+				// Add conditional fields based on reason for contact
+				if (formData.reasonForContact === "Corporate Training enquiry" || formData.reasonForContact === "College Training enquiry") {
+					queryData.organisationName = formData.organisationName;
+					queryData.selectedCourse = formData.selectedCourse;
+					if (formData.selectedCourse === "Other (Specific requirement)") {
+						queryData.otherCourse = formData.otherCourse;
+					}
+					queryData.scheduleTraining = formData.scheduleTraining;
+					queryData.preferredMode = formData.preferredMode;
+					queryData.numberOfParticipants = formData.numberOfParticipants;
+					if (formData.additionalComments) {
+						queryData.additionalComments = formData.additionalComments;
+					}
+				} else if (formData.reasonForContact === "Course enquiry" || formData.reasonForContact === "Batch enquiry") {
+					queryData.selectedCourse = formData.selectedCourse;
+					if (formData.selectedCourse === "Other (Specific requirement)") {
+						queryData.otherCourse = formData.otherCourse;
+					}
+					queryData.enquiryDetails = formData.enquiryDetails;
+					queryData.preferredMode = formData.preferredMode;
+				} else if (formData.reasonForContact === "Corporate Consultation") {
+					queryData.organisationName = formData.organisationName;
+					queryData.requirements = formData.requirements;
+				}
+
+				// Add the query to Firestore
+				await addDoc(collection(db, "queries"), queryData);
+
+				console.log("Form submitted successfully:", queryData);
+				alert("Thank you for your enquiry! We will get back to you soon.");
+
+				// Reset form
+				setFormData({
+					name: "",
+					phone: "",
+					email: "",
+					reasonForContact: "",
+					organisationName: "",
+					selectedCourse: "",
+					otherCourse: "",
+					scheduleTraining: "",
+					preferredMode: "",
+					numberOfParticipants: "",
+					enquiryDetails: "",
+					additionalComments: "",
+					requirements: "",
+				});
+			} catch (error) {
+				console.error("Error submitting form:", error);
+				alert("There was an error submitting your enquiry. Please try again or contact us directly.");
+			}
 		}
 	};
 

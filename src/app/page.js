@@ -262,7 +262,7 @@ export default function Home() {
 								</div>
 
 								<Link
-									href="https://forms.gle/JrS5NyqdWMvBM46d7"
+									href="/contact"
 									className="w-full bg-gradient-to-r from-orange-500 to-amber-500 text-white font-semibold px-8 py-4 rounded-full hover:from-yellow-600 hover:to-amber-700 transition-all duration-300 transform hover:scale-105 shadow-lg text-lg text-center block"
 								>
 									Schedule a demo
@@ -355,7 +355,7 @@ export default function Home() {
 								</button> */}
 
 								<Link
-									href="https://forms.gle/JrS5NyqdWMvBM46d7"
+									href="/contact"
 									className="w-full bg-gradient-to-r from-orange-500 to-amber-500 text-white font-semibold px-8 py-4 rounded-full hover:from-yellow-600 hover:to-amber-700 transition-all duration-300 transform hover:scale-105 shadow-lg text-lg text-center block"
 								>
 									Schedule an appointment
@@ -552,7 +552,7 @@ export default function Home() {
 									Start Your Consultation
 								</button> */}
 								<Link
-									href="https://forms.gle/JrS5NyqdWMvBM46d7"
+									href="/contact"
 									className="bg-gradient-to-r from-orange-500 to-amber-500 text-white font-semibold px-8 py-4 rounded-full hover:from-yellow-600 hover:to-amber-700 transition-all duration-300 transform hover:scale-105 shadow-lg text-lg text-center block"
 								>
 									Start Your Consultation
@@ -660,8 +660,7 @@ export default function Home() {
 								</ul>
 
 								<Link
-									href="https://forms.gle/JrS5NyqdWMvBM46d7"
-									target="_blank"
+									href="/contact"
 									rel="noopener noreferrer"
 									className={`px-4 py-3 rounded-full font-semibold transition-all text-center block text-sm sm:text-base ${
 										course.popular
@@ -710,7 +709,7 @@ export default function Home() {
 							Join a Batch
 						</button> */}
 						<Link
-							href="https://forms.gle/JrS5NyqdWMvBM46d7"
+							href="/contact"
 							className="bg-gradient-to-r from-yellow-500 to-amber-600 text-white px-8 py-4 rounded-full text-lg font-semibold hover:from-yellow-600 hover:to-amber-700 transition-all transform hover:scale-105 shadow-lg"
 						>
 							Join a Batch
@@ -955,14 +954,12 @@ export default function Home() {
 									Join thousands of successful professionals who have already transformed their careers with my proven data
 									analytics programs. Your success story starts with one click.
 								</p>
-
 								<Link
-									href="https://forms.gle/JrS5NyqdWMvBM46d7"
+									href="/contact"
 									className="inline-block bg-white text-red-700 px-6 sm:px-10 py-3 sm:py-4 rounded-full text-lg sm:text-xl font-bold hover:bg-gray-100 transition-all transform hover:scale-105 shadow-2xl mb-4 sm:mb-6"
 								>
 									Start Your Journey Today
-								</Link>
-
+								</Link>{" "}
 								<div className="text-red-300 text-xs sm:text-sm space-y-1">
 									<p>🚀 Instant enrollment | 📚 Course materials included</p>
 									<p>💼 Job placement support | 🏆 Industry-recognized certification</p>

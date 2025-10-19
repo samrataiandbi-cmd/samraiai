@@ -667,28 +667,30 @@ function ContactForm() {
 								</svg>
 							</div>
 							<h3 className="text-white font-semibold mb-2">Phone</h3>
-						<a
-							href="tel:+919810803676"
-							className="text-white hover:text-red-300 transition-colors font-semibold text-sm sm:text-base"
-							aria-label="Call Samrat Mukherjee"
-						>
-							+91 98108 03676
-						</a>
-					</div>
-				</motion.div>
-			</div>
-		</section>
-	</div>
-);
+							<a
+								href="tel:+919810803676"
+								className="text-white hover:text-red-300 transition-colors font-semibold text-sm sm:text-base"
+								aria-label="Call Samrat Mukherjee"
+							>
+								+91 98108 03676
+							</a>
+						</div>
+					</motion.div>
+				</div>
+			</section>
+		</div>
+	);
 }
 
 export default function ContactPage() {
 	return (
-		<Suspense fallback={
-			<div className="min-h-screen bg-gradient-to-br from-red-900 via-red-950 to-red-900 flex items-center justify-center">
-				<div className="text-white text-xl">Loading...</div>
-			</div>
-		}>
+		<Suspense
+			fallback={
+				<div className="min-h-screen bg-gradient-to-br from-red-900 via-red-950 to-red-900 flex items-center justify-center">
+					<div className="text-white text-xl">Loading...</div>
+				</div>
+			}
+		>
 			<ContactForm />
 		</Suspense>
 	);

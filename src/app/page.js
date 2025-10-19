@@ -262,7 +262,7 @@ export default function Home() {
 								</div>
 
 								<Link
-									href="/contact"
+									href="/contact?reason=College Training enquiry"
 									className="w-full bg-gradient-to-r from-orange-500 to-amber-500 text-white font-semibold px-8 py-4 rounded-full hover:from-yellow-600 hover:to-amber-700 transition-all duration-300 transform hover:scale-105 shadow-lg text-lg text-center block"
 								>
 									Schedule a demo
@@ -355,7 +355,7 @@ export default function Home() {
 								</button> */}
 
 								<Link
-									href="/contact"
+									href="/contact?reason=Corporate Training enquiry"
 									className="w-full bg-gradient-to-r from-orange-500 to-amber-500 text-white font-semibold px-8 py-4 rounded-full hover:from-yellow-600 hover:to-amber-700 transition-all duration-300 transform hover:scale-105 shadow-lg text-lg text-center block"
 								>
 									Schedule an appointment
@@ -552,7 +552,7 @@ export default function Home() {
 									Start Your Consultation
 								</button> */}
 								<Link
-									href="/contact"
+									href="/contact?reason=Corporate Consultation"
 									className="bg-gradient-to-r from-orange-500 to-amber-500 text-white font-semibold px-8 py-4 rounded-full hover:from-yellow-600 hover:to-amber-700 transition-all duration-300 transform hover:scale-105 shadow-lg text-lg text-center block"
 								>
 									Start Your Consultation
@@ -575,7 +575,6 @@ export default function Home() {
 							Comprehensive programs designed to take you from beginner to expert
 						</p>
 					</div>
-
 					<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
 						{[
 							{
@@ -660,7 +659,7 @@ export default function Home() {
 								</ul>
 
 								<Link
-									href="/contact"
+									href="/contact?reason=Course enquiry"
 									rel="noopener noreferrer"
 									className={`px-4 py-3 rounded-full font-semibold transition-all text-center block text-sm sm:text-base ${
 										course.popular
@@ -672,8 +671,7 @@ export default function Home() {
 								</Link>
 							</div>
 						))}
-					</div>
-
+					</div>{" "}
 					<div className="text-center mt-8 sm:mt-12">
 						<p className="text-base sm:text-lg text-gray-200 mb-4 sm:mb-6">
 							🎯 100% Job Placement Assistance | 🔄 Lifetime Access to Updates | 📚 Comprehensive Curriculum
@@ -709,7 +707,7 @@ export default function Home() {
 							Join a Batch
 						</button> */}
 						<Link
-							href="/contact"
+							href="/contact?reason=Batch enquiry"
 							className="bg-gradient-to-r from-yellow-500 to-amber-600 text-white px-8 py-4 rounded-full text-lg font-semibold hover:from-yellow-600 hover:to-amber-700 transition-all transform hover:scale-105 shadow-lg"
 						>
 							Join a Batch

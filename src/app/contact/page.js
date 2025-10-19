@@ -1,5 +1,6 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect, Suspense } from "react";
+import { useSearchParams } from "next/navigation";
 import { motion } from "framer-motion";
 import Navigation from "@/components/Navigation";
 import { db } from "@/lib/firebase";
@@ -20,7 +21,8 @@ const courses = [
 	"Big Data with Data Science",
 ];
 
-export default function ContactPage() {
+function ContactForm() {
+	const searchParams = useSearchParams();
 	const [formData, setFormData] = useState({
 		name: "",
 		phone: "",
@@ -38,6 +40,17 @@ export default function ContactPage() {
 	});
 
 	const [errors, setErrors] = useState({});
+
+	// Handle URL query parameters to pre-select reason for contact
+	useEffect(() => {
+		const reason = searchParams.get("reason");
+		if (reason) {
+			setFormData((prev) => ({
+				...prev,
+				reasonForContact: reason,
+			}));
+		}
+	}, [searchParams]);
 
 	const handleChange = (e) => {
 		const { name, value } = e.target;
@@ -404,9 +417,6 @@ export default function ContactPage() {
 												<option value="In-person" className="bg-slate-800">
 													In-person
 												</option>
-												<option value="Hybrid" className="bg-slate-800">
-													Hybrid
-												</option>
 											</select>
 											{errors.preferredMode && <p className="mt-1 text-sm text-red-400">{errors.preferredMode}</p>}
 										</div>
@@ -553,9 +563,6 @@ export default function ContactPage() {
 											<option value="In-person" className="bg-slate-800">
 												In-person
 											</option>
-											<option value="Hybrid" className="bg-slate-800">
-												Hybrid
-											</option>
 										</select>
 										{errors.preferredMode && <p className="mt-1 text-sm text-red-400">{errors.preferredMode}</p>}
 									</div>
@@ -660,17 +667,29 @@ export default function ContactPage() {
 								</svg>
 							</div>
 							<h3 className="text-white font-semibold mb-2">Phone</h3>
-							<a
-								href="tel:+919810803676"
-								className="text-white hover:text-red-300 transition-colors font-semibold text-sm sm:text-base"
-								aria-label="Call Samrat Mukherjee"
-							>
-								+91 98108 03676
-							</a>
-						</div>
-					</motion.div>
-				</div>
-			</section>
-		</div>
+						<a
+							href="tel:+919810803676"
+							className="text-white hover:text-red-300 transition-colors font-semibold text-sm sm:text-base"
+							aria-label="Call Samrat Mukherjee"
+						>
+							+91 98108 03676
+						</a>
+					</div>
+				</motion.div>
+			</div>
+		</section>
+	</div>
+);
+}
+
+export default function ContactPage() {
+	return (
+		<Suspense fallback={
+			<div className="min-h-screen bg-gradient-to-br from-red-900 via-red-950 to-red-900 flex items-center justify-center">
+				<div className="text-white text-xl">Loading...</div>
+			</div>
+		}>
+			<ContactForm />
+		</Suspense>
 	);
 }

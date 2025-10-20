@@ -580,7 +580,6 @@ export default function Home() {
 							{
 								title: "Data Analytics Fundamentals",
 								level: "Beginner",
-								duration: "8 weeks",
 								features: [
 									"Python & SQL from scratch",
 									"Excel advanced techniques",
@@ -593,7 +592,6 @@ export default function Home() {
 							{
 								title: "Machine Learning Mastery",
 								level: "Intermediate",
-								duration: "12 weeks",
 								features: [
 									"Supervised & unsupervised learning",
 									"Deep learning with TensorFlow",
@@ -607,7 +605,6 @@ export default function Home() {
 							{
 								title: "Advanced Analytics & AI",
 								level: "Advanced",
-								duration: "16 weeks",
 								features: [
 									"Advanced ML algorithms",
 									"Natural Language Processing",
@@ -635,7 +632,6 @@ export default function Home() {
 										<span className="bg-yellow-500/20 text-yellow-300 px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm border border-yellow-500/30">
 											{course.level}
 										</span>
-										<span className="text-gray-300 text-sm sm:text-base">{course.duration}</span>
 									</div>
 								</div>
 

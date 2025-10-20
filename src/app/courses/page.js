@@ -14,9 +14,7 @@ export default function CoursesPage() {
 		{
 			title: "Data Science Course",
 			image: "/images/courses/data-science.png",
-			classes: "60 Classes",
-			hours: "650 Hours",
-			level: "Experience",
+			level: "Experienced",
 			category: "Data Science",
 			description:
 				"Master the complete data science pipeline from data collection to machine learning deployment. This comprehensive course covers statistical analysis, data visualization, and predictive modeling.",
@@ -32,9 +30,7 @@ export default function CoursesPage() {
 		{
 			title: "Data Analytics Course",
 			image: "/images/courses/data-analytics.png",
-			classes: "38 Classes",
-			hours: "500 Hours",
-			level: "Experience",
+			level: "Experienced",
 			category: "Data Science",
 			description:
 				"Transform raw data into actionable business insights. Learn to analyze trends, create compelling visualizations, and make data-driven recommendations for business growth.",
@@ -50,9 +46,7 @@ export default function CoursesPage() {
 		{
 			title: "Business Analytics Course",
 			image: "/images/courses/business-analytics.png",
-			classes: "38 Classes",
-			hours: "475 Hours",
-			level: "Experience",
+			level: "Experienced",
 			category: "Business Intelligence",
 			description:
 				"Bridge the gap between business strategy and data insights. Learn to identify business problems, analyze performance metrics, and drive strategic decision-making through analytics.",
@@ -71,8 +65,6 @@ export default function CoursesPage() {
 		{
 			title: "Machine Learning Mastery",
 			image: "/images/courses/machine-learning.png",
-			classes: "45 Classes",
-			hours: "580 Hours",
 			level: "Advanced",
 			category: "Machine Learning",
 			description:
@@ -89,8 +81,6 @@ export default function CoursesPage() {
 		{
 			title: "Artificial Intelligence",
 			image: "/images/courses/artificial-intelligence.png",
-			classes: "52 Classes",
-			hours: "720 Hours",
 			level: "Expert",
 			category: "Artificial Intelligence",
 			description:
@@ -107,8 +97,6 @@ export default function CoursesPage() {
 		{
 			title: "Big Data & Cloud Analytics",
 			image: "/images/courses/big-data-cloud.png",
-			classes: "40 Classes",
-			hours: "550 Hours",
 			level: "Advanced",
 			category: "Big Data & Cloud",
 			description:
@@ -125,8 +113,6 @@ export default function CoursesPage() {
 		{
 			title: "Advanced AI and Generative AI Program",
 			image: "/images/courses/generative-ai.png",
-			classes: "48 Classes",
-			hours: "600 Hours",
 			level: "Expert",
 			category: "Artificial Intelligence",
 			description:
@@ -143,8 +129,6 @@ export default function CoursesPage() {
 		{
 			title: "Applied Data Science with AI",
 			image: "/images/courses/data-science-with-ai.png",
-			classes: "50 Classes",
-			hours: "650 Hours",
 			level: "Advanced",
 			category: "Data Science",
 			description:
@@ -161,8 +145,6 @@ export default function CoursesPage() {
 		{
 			title: "Applied Data Science with Python",
 			image: "/images/courses/data-science-with-python.png",
-			classes: "46 Classes",
-			hours: "600 Hours",
 			level: "Advanced",
 			category: "Data Science",
 			description:
@@ -179,8 +161,6 @@ export default function CoursesPage() {
 		{
 			title: "Mastering Data Science with R",
 			image: "/images/courses/data-science-with-r.png",
-			classes: "46 Classes",
-			hours: "600 Hours",
 			level: "Advanced",
 			category: "Data Science",
 			description:
@@ -197,8 +177,6 @@ export default function CoursesPage() {
 		{
 			title: "Mastering Data Visualizations with Power BI",
 			image: "/images/courses/data-visualization-with-bi.png",
-			classes: "35 Classes",
-			hours: "400 Hours",
 			level: "Intermediate",
 			category: "Business Intelligence",
 			description:
@@ -215,8 +193,6 @@ export default function CoursesPage() {
 		{
 			title: "Big Data with Data Science",
 			image: "/images/courses/big-data.png",
-			classes: "55 Classes",
-			hours: "750 Hours",
 			level: "Expert",
 			category: "Big Data & Cloud",
 			description:
@@ -333,12 +309,8 @@ export default function CoursesPage() {
 									{/* Course Stats */}
 									<div className="flex justify-between items-center mb-6">
 										<div className="flex space-x-4">
-											<span className="text-white/70 text-sm">
-												<span className="text-orange-400 font-semibold">{course.classes}</span>
-											</span>
-											<span className="text-white/70 text-sm">
-												<span className="text-orange-400 font-semibold">{course.hours}</span>
-											</span>
+											<span className="text-white/70 text-sm"></span>
+											<span className="text-white/70 text-sm"></span>
 											<span className="bg-emerald-500/20 text-emerald-300 px-3 py-1 rounded-full text-xs border border-emerald-500/30">
 												{course.level}
 											</span>
@@ -453,8 +425,8 @@ export default function CoursesPage() {
 						<div>
 							<h4 className="text-lg font-semibold text-white mb-4">Contact</h4>
 							<div className="space-y-2 text-white/70">
-								<p>📧 samrat@dataanalytics.com</p>
-								<p>📱 +91 98765 43210</p>
+								<p>📧 samrataiandbi@gmail.com</p>
+								<p>📱 +91 98108 03676</p>
 								<p>🌐 Available for corporate training</p>
 							</div>
 						</div>

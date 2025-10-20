@@ -19,7 +19,7 @@ export default function AdminPanel() {
 	// Check authentication state
 	useEffect(() => {
 		const unsubscribe = onAuthStateChanged(auth, (user) => {
-			if (user && user.email === "yashkm@gmail.com") {
+			if (user && (user.email === "yashkm@gmail.com" || user.email === "samrataiandbi@gmail.com")) {
 				setIsAuthenticated(true);
 				setLoading(false);
 			} else {
@@ -68,7 +68,8 @@ export default function AdminPanel() {
 
 		try {
 			const userCredential = await signInWithEmailAndPassword(auth, email, password);
-			if (userCredential.user.email !== "yashkm@gmail.com") {
+			const allowedEmails = ["yashkm@gmail.com", "samrataiandbi@gmail.com"];
+			if (!allowedEmails.includes(userCredential.user.email)) {
 				await signOut(auth);
 				setLoginError("Unauthorized access. Access denied.");
 			}

@@ -14,8 +14,8 @@ export default function Home() {
 	// Placeholder URLs - replace with real URLs when ready
 	const instituteLinks = {
 		"Indian Institute of Management": "https://share.google/PxsDC4OLpPmqPIpWc",
-		Amity: "https://share.google/WyuuVh0qyN2ZxxawV",
-		IGDTUW: "https://share.google/rpedYIjeNycDUoNBq",
+		"Amity ": "https://share.google/WyuuVh0qyN2ZxxawV",
+		"IGDTUW ": "https://share.google/rpedYIjeNycDUoNBq",
 		"Jaipuria institute": "https://share.google/gfYZVzlTVC69fWs2Z",
 		"IMS Engineering College": "https://share.google/2gXjd29rJwoslF8du",
 		"Christ university": "https://share.google/KdmUYVV9kx05lnvhA",
